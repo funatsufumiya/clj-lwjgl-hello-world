@@ -5,17 +5,41 @@ OS=macosx
 ARCH=arm64
 PREF=https://build.lwjgl.org/release/$LWJGL_VERSION/$OS/$ARCH
 
+# set lib prefix if macosx or linux
+if [ "${OS}" == "macosx" ]; then
+    LIBPREFIX=lib
+elif [ "${OS}" == "linux" ]; then
+    LIBPREFIX=lib
+else
+    LIBPREFIX=""
+fi
+
+# set lib suffix (extension)
+if [ "${OS}" == "windows" ]; then
+    LIBSUFFIX=dll
+elif [ "${OS}" == "macosx" ]; then
+    LIBSUFFIX=dylib
+elif [ "${OS}" == "linux" ]; then
+    LIBSUFFIX=so
+else
+    # unknown OS, exit
+    echo "Unknown OS: ${OS}"
+    exit 1
+fi
+
+
 # define dl function
 dl() {
-    if [ -f $1 ]; then
-        echo "$1 already exists"
+    f=${LIBPREFIX}$1.${LIBSUFFIX}
+    if [ -f $f ]; then
+        echo "$f already exists"
         return
     fi
-    wget $PREF/$1
+    wget $PREF/$f
 }
 
 cd $(dirname $0)
 
-dl libbgfx.dylib
-dl libglfw.dylib
-dl liblwjgl.dylib
+dl lwjgl
+dl glfw
+dl bgfx
