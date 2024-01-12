@@ -3,6 +3,8 @@
 LWJGL_VERSION="3.3.2"
 OS=macosx
 ARCH=arm64
+# OS=windows
+# ARCH=x64
 PREF=https://build.lwjgl.org/release/$LWJGL_VERSION/$OS/$ARCH
 
 # set lib prefix if macosx or linux
