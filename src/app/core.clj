@@ -3,7 +3,6 @@
 
 (require '[clojure.string :as string])
 
-; https://github.com/rogerallen/hello_lwjgl/blob/master/src/hello_lwjgl/alpha.clj
 (import
   '[org.lwjgl BufferUtils]
   '[org.lwjgl.system MemoryStack]
@@ -101,13 +100,6 @@
          
   (if-not (BGFX/bgfx_init init)
     (throw (RuntimeException. "Error initializing bgfx renderer"))))
-
-;; System.out.println("bgfx renderer: " + bgfx_get_renderer_name(bgfx_get_renderer_type()));
-
-;;         // Enable debug text.
-;;         bgfx_set_debug(BGFX_DEBUG_TEXT);
-
-;;         bgfx_set_view_clear(0, BGFX_CLEAR_COLOR | BGFX_CLEAR_DEPTH, 0x303030ff, 1.0f, 0);
 
 (println "bgfx renderer: " (BGFX/bgfx_get_renderer_name (BGFX/bgfx_get_renderer_type)))
 (BGFX/bgfx_set_debug BGFX/BGFX_DEBUG_TEXT)
