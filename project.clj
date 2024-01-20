@@ -21,6 +21,7 @@
 (def LWJGL_MODULES ["lwjgl"
                     "lwjgl-bgfx"
                     "lwjgl-glfw"
+                    "lwjgl-jemalloc"
                     ])
 
 (def no-natives? #{"lwjgl-egl" "lwjgl-jawt" "lwjgl-odbc"
@@ -39,8 +40,10 @@
 
 (def all-dependencies
   (into ;; Add your non-LWJGL dependencies here
-   '[[org.clojure/clojure "1.11.1"]
-     ]
+   '[
+      [org.clojure/clojure "1.11.1"]
+      [try-let "1.3.1"]
+    ]
    (lwjgl-deps-with-natives)))
 
 (defproject clj-lwjgl-hello-world "0.1.0-SNAPSHOT"

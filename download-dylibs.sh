@@ -45,3 +45,4 @@ cd $(dirname $0)
 dl lwjgl
 dl glfw
 dl bgfx
+dl jemalloc
