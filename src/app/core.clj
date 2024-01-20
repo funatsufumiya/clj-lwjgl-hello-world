@@ -109,6 +109,7 @@
 (while (not (GLFW/glfwWindowShouldClose window))
   (GLFW/glfwPollEvents)
   (BGFX/bgfx_set_view_rect 0 0 0 width height)
+  (BGFX/bgfx_touch 0)
   (BGFX/bgfx_dbg_text_clear 0 false)
   (BGFX/bgfx_dbg_text_printf 2 1 0x0f "Hello, World!")
   (BGFX/bgfx_frame false))
